@@ -15,7 +15,7 @@ from pytz import timezone
 import urllib.parse
 
 
-mailer = MailSender(smtphost='mail.nsi.bg', smtpport=25, mailfrom='nsi-essnet-01@nsi.bg', smtpuser='', smtppass ='')
+mailer = MailSender(smtphost='mail-server-address', smtpport=25, mailfrom='nsi-essnet-01@nsi.bg', smtpuser='', smtppass ='')
 
 configure_logging(install_root_handler=False)
 logging.basicConfig(
@@ -312,23 +312,23 @@ class specificSpider(scrapy.Spider):
 
     def spider_closed(self):
         global yesterday
-#        mailer.send(to=["kgeorgiev@nsi.bg"], subject="Some subject", body="Some body"+str(self.crawler.stats.get_stats()))
+#        mailer.send(to=["email1@example.com"], subject="Some subject", body="Some body"+str(self.crawler.stats.get_stats()))
         self.crawler.stats.set_value('finish_time', datetime.datetime.now(timezone('Europe/Sofia')).strftime('%Y-%m-%d %H:%M:%S %Z %z'))
         res = '\r\n\r\n'.join(['%s ::: %s' % (key, value) for (key, value) in self.crawler.stats.get_stats().items()])
         tag=sys.argv[3].replace('tag=','')
         if tag=='pochivka.bg' or tag=='booking.com':
-            mailer.send(to=["kgeorgiev@nsi.bg","avukov@nsi.bg","tstefanova@nsi.bg"], subject="Scrape info ... "+tag+" ::: "+yesterday, body=res)
-#            mailer.send(to=["kgeorgiev@nsi.bg"], subject="Scrape info ... "+tag+" ::: "+yesterday, body=res)
+            mailer.send(to=["email1@example.com","email6@example.com","email7@example.com"], subject="Scrape info ... "+tag+" ::: "+yesterday, body=res)
+#            mailer.send(to=["email1@example.com"], subject="Scrape info ... "+tag+" ::: "+yesterday, body=res)
         elif tag=='jobs.bg' or tag=="zaplata.bg":
-            mailer.send(to=["kgeorgiev@nsi.bg","nveleva@nsi.bg","pshtarbanov@nsi.bg"], subject="Scrape info ... "+tag+" ::: "+yesterday, body=res)
+            mailer.send(to=["email1@example.com","email8@example.com","email3@example.com"], subject="Scrape info ... "+tag+" ::: "+yesterday, body=res)
         elif tag=='ozon.bg.muzika' or tag=='olx.bg.naemi.ek' or tag=='olx.bg.naemi' or tag=='imot.bg.naemi' or tag=='helikon_music' or tag=='obsidian.bg' or tag=='pulsar_nai-prodavani' or tag=='booktrading_books_top' or tag=='bard_top50' or tag=='bard_bestsellers' or tag=='helikon_top10_teen' or tag=='helikon_top10_nehudojestvena' or tag=='helikon_top10_hudojestvena':
-            mailer.send(to=["kgeorgiev@nsi.bg","nveleva@nsi.bg"], subject="Scrape info ... "+tag+" ::: "+yesterday, body=res)
+            mailer.send(to=["email1@example.com","email8@example.com"], subject="Scrape info ... "+tag+" ::: "+yesterday, body=res)
         elif  tag=='imoti.com.naemi' or tag=='nedvijim.com.naemi' or tag=='homes.bg.naemi.ek' or tag=='homes.bg.naemi' or tag=='alo.bg.naemi' or tag=='uchebnika.bg.pomagala' or tag=='uchebnika.bg.uchebnici' or tag=='e-uchebnik.bg.7.uchebni.pomagala' or tag=='e-uchebnik.bg.9.uchebnici' or tag=='unipress.bg' or tag=='uchebnika.bg.rechnici' or tag=='sms.bg.parts' or tag=='plesio.bg.tableti' or tag=='plesio.bg.mobilni' or tag=='plesio.bg.parts' or tag=='smartphone.bg.mobilni' or tag=='pcstore.bg.mobilni' or tag=='pcstore.bg.tableti' or tag=='emag.bg.tableti' or tag=='emag.bg.mobilni' or tag=='technopolis.bg.mobilni' or tag=='amco-shop.com.tableti' or tag=='computer-store.bg.tableti' or tag=='speedcomputers.biz.tableti' or tag=='technomarket.bg.tableti' or tag=='tablet.bg.tableti' or tag=='technopolis.bg.tableti' or tag=='jarcomputers.com' or tag=='jarcomputers.com.tableti' or tag=='jarcomputers.com.mobilni' or tag=='most.bg':
-            mailer.send(to=["kgeorgiev@nsi.bg","pshtarbanov@nsi.bg"], subject="Scrape info ... "+tag+" ::: "+yesterday, body=res)
+            mailer.send(to=["email1@example.com","email3@example.com"], subject="Scrape info ... "+tag+" ::: "+yesterday, body=res)
         elif tag=='mobile.bg' or tag=='amco-shop.com.mobilni' or tag=='ardes.bg.mobilni' or tag=='datacom.bg.mobilni' or tag=='datacom.bg.mobilni.EN.Prestigio' or tag=='address.bg.naemi' or tag=='mirela.bg.naemi' or tag=='holmes.bg.naemi':
-            mailer.send(to=["kgeorgiev@nsi.bg","vkostadinova@nsi.bg"], subject="Scrape info ... "+tag+" ::: "+yesterday, body=res)
+            mailer.send(to=["email1@example.com","email9@example.com"], subject="Scrape info ... "+tag+" ::: "+yesterday, body=res)
         else:
-            mailer.send(to=["kgeorgiev@nsi.bg"], subject="Scrape info ... "+tag+" ::: "+yesterday, body=res)
+            mailer.send(to=["email1@example.com"], subject="Scrape info ... "+tag+" ::: "+yesterday, body=res)
 
 
 

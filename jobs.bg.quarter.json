@@ -1,0 +1,271 @@
+{
+  "_id": "scrape_jobbg_quarter",
+  "startUrl": [
+    "https://www.jobs.bg/front_job_search.php?add_sh=1&location_sid=&distance=0&categories_all=0&type_all=0&position_level_all=0&company_type%5B%5D=0&keyword=&job_languages_all=0&salary_from=0&last=0"
+  ],
+  "selectors": [
+    {
+      "id": "pagination",
+      "type": "SelectorLink",
+      "parentSelectors": [
+        "_root",
+        "pagination"
+      ],
+      "selector": "#search_results_div td tr:nth-of-type(1) a.pathlink",
+      "multiple": true,
+      "delay": "100"
+    },
+    {
+      "id": "adres",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "td td tr:nth-of-type(3) td",
+      "multiple": false,
+      "regex": "(?<=(Месторабота\\s)).+?(?=(\\;))",
+      "delay": "11"
+    },
+    {
+      "id": "zaplatamin",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "td td tr:nth-of-type(3) td",
+      "multiple": false,
+      "regex": "(?<=(от\\s))(\\d\\d\\d+)(?=(\\s))",
+      "delay": "12"
+    },
+    {
+      "id": "zapalatamax",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "td td tr:nth-of-type(3) td",
+      "multiple": false,
+      "regex": "(?<=(\\d\\sдо\\s))(\\d\\d\\d+)(?=(\\s))",
+      "delay": "13"
+    },
+    {
+      "id": "firma",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "tr:nth-of-type(2) a.company_link",
+      "multiple": false,
+      "regex": "",
+      "delay": "15"
+    },
+    {
+      "id": "page",
+      "type": "SelectorLink",
+      "parentSelectors": [
+        "pagination"
+      ],
+      "selector": "div td td td tr a.joblink",
+      "multiple": true,
+      "delay": 0
+    },
+    {
+      "id": "tip",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "td td tr:nth-of-type(3) td",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "ezici",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "td td tr:nth-of-type(3) td",
+      "multiple": false,
+      "regex": "(?<=(Езици\\:\\s)).*",
+      "delay": 0
+    },
+    {
+      "id": "zaplatavid",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "td td tr:nth-of-type(3) td",
+      "multiple": false,
+      "regex": "(Бруто)|(Нето)",
+      "delay": 0
+    },
+    {
+      "id": "razglejdane",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "span#cnt_box",
+      "multiple": false,
+      "regex": "(\\d+\\s\\d+|\\d+)",
+      "delay": 0
+    },
+    {
+      "id": "data",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "td.explainGray",
+      "multiple": false,
+      "regex": "\\d\\d\\.\\d\\d\\.\\d\\d\\d\\d",
+      "delay": 0
+    },
+    {
+      "id": "refnumber",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "td.explainGray",
+      "multiple": false,
+      "regex": "(?<=(Ref\\.\\#\\:\\s)).*",
+      "delay": 0
+    },
+    {
+      "id": "valuta",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "td td tr:nth-of-type(3) td",
+      "multiple": false,
+      "regex": "\\S+(?=(\\s(\\(Нето\\)|\\(Бруто\\))))",
+      "delay": 0
+    },
+    {
+      "id": "grad",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "td td tr:nth-of-type(3) td",
+      "multiple": false,
+      "regex": "(?<=(Месторабота\\s)).+?(?=(\\s\\/|\\;|\\,))",
+      "delay": 0
+    },
+    {
+      "id": "kategoria",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "tr:nth-of-type(2) tr:nth-of-type(2) td",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "nivo",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "td td tr:nth-of-type(3) td",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "tipzaetost",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "body",
+      "multiple": false,
+      "regex": "(?=(Временна|Стаж|Постоянна|Пълно|Непълно|Подходяща))(.*(без\\sопит|студенти|работа|време))",
+      "delay": 0
+    },
+    {
+      "id": "title",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "title",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "description",
+      "type": "SelectorElementAttribute",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "meta:nth-of-type(5)",
+      "multiple": false,
+      "extractAttribute": "content",
+      "delay": 0
+    },
+    {
+      "id": "rabota",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "h1",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "opisanie",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "tr:nth-of-type(5) tr:nth-of-type(2) td",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "obrazovanie",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "tr:nth-of-type(5) tr:nth-of-type(2) td",
+      "multiple": false,
+      "regex": "(Висше\\sобразование|Средно\\sобразование|висше)",
+      "delay": 0
+    },
+    {
+      "id": "dyrjava",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "td td tr:nth-of-type(3) td",
+      "multiple": false,
+      "regex": "(?<=(\\s\\/\\s)).+?(?=(\\;|\\,))",
+      "delay": 0
+    },
+    {
+      "id": "site",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "table.main-footer-jobs tr:nth-of-type(3) span",
+      "multiple": false,
+      "regex": "Jobs\\.bg",
+      "delay": 0
+    }
+  ]
+}

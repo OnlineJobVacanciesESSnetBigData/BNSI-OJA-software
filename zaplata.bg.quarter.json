@@ -1,0 +1,271 @@
+{
+  "_id": "scrape_zaplatabg_quarter",
+  "startUrl": [
+    "https://www.zaplata.bg/search/?q=&city_name=&city=&city_distance=0&price=200%3B10000&cat%5B%5D=1000&go="
+  ],
+  "selectors": [
+    {
+      "id": "pagination",
+      "type": "SelectorLink",
+      "parentSelectors": [
+        "_root",
+        "pagination"
+      ],
+      "selector": "div.pages.pagesTOP a",
+      "multiple": true,
+      "delay": "100"
+    },
+    {
+      "id": "adres",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "span:nth-of-type(2) > span, table.info tr:contains('Месторабота:') td:nth-of-type(2)",
+      "multiple": false,
+      "regex": "",
+      "delay": "11"
+    },
+    {
+      "id": "zaplatamin",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "div.zIco",
+      "multiple": false,
+      "regex": "(?!(\\s))(\\d\\d\\d+)(?=(\\s))",
+      "delay": "12"
+    },
+    {
+      "id": "zapalatamax",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "div.zIco",
+      "multiple": false,
+      "regex": "(?<=(\\-\\s))(\\d+)(?=(\\s))",
+      "delay": "13"
+    },
+    {
+      "id": "firma",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "div.jobOptions span h2 a, td.td1 li.menu span a",
+      "multiple": false,
+      "regex": "",
+      "delay": "15"
+    },
+    {
+      "id": "page",
+      "type": "SelectorLink",
+      "parentSelectors": [
+        "pagination"
+      ],
+      "selector": "ul.listItem li.c2 a",
+      "multiple": true,
+      "delay": 0
+    },
+    {
+      "id": "tip",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "div.jobOptions, table.corporateView > tbody > tr:nth-of-type(2)",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "ezici",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "div.jobOptions",
+      "multiple": false,
+      "regex": "(?<=(Език\\s))(\\D)+(?=(Месечна|Статистики))",
+      "delay": 0
+    },
+    {
+      "id": "zaplatavid",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "div.zIco strong, td.td2",
+      "multiple": false,
+      "regex": "(бруто)|(нето)",
+      "delay": 0
+    },
+    {
+      "id": "razglejdane",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "body",
+      "multiple": false,
+      "regex": "(?<=(Видяна\\:(\\s)))\\d+",
+      "delay": 0
+    },
+    {
+      "id": "data",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "div.statistics, div.stat",
+      "multiple": false,
+      "regex": "\\d\\d\\s+\\D+\\s+\\d\\d\\d\\d",
+      "delay": 0
+    },
+    {
+      "id": "refnumber",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "td.explainGray",
+      "multiple": false,
+      "regex": "(?<=(Ref\\.\\#\\:\\s)).*",
+      "delay": 0
+    },
+    {
+      "id": "valuta",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "div.zIco, td.td2",
+      "multiple": false,
+      "regex": "(?<=(\\d\\s))(лв\\.)",
+      "delay": 0
+    },
+    {
+      "id": "grad",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "span span a.searchRes, span span span:nth-of-type(1)",
+      "multiple": false,
+      "regex": "(?<=(гр\\.)).+|(?<=(с\\.)).+|(?<=(к.к.\\s)).+",
+      "delay": 0
+    },
+    {
+      "id": "kategoria",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "table.info tr:contains('Категория:') span, span:nth-of-type(3) a.searchRes",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "nivo",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "table.info tr:contains('Ниво:') span, span:nth-of-type(4) a.searchRes",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "tipzaetost",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "body",
+      "multiple": false,
+      "regex": "(?<=(Тип\\sзаетост\\s))(\\D)+?(?=(Език|Месечна|Статистики|Образование|Инструменти))|(?<=(Тип\\sзаетост\\:))(\\D)+?(?=(Език|Месечна|Статистики|Образование|Инструменти))",
+      "delay": 0
+    },
+    {
+      "id": "title",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "title",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "description",
+      "type": "SelectorElementAttribute",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "meta:nth-of-type(2)",
+      "multiple": false,
+      "extractAttribute": "content",
+      "delay": 0
+    },
+    {
+      "id": "rabota",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "h1.title",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "opisanie",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "span div",
+      "multiple": false,
+      "regex": "",
+      "delay": 0
+    },
+    {
+      "id": "obrazovanie",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "div.jobOptions",
+      "multiple": false,
+      "regex": "(?<=(Образование))(\\D)+?(?=(Език|Месечна|Статистики|Инструменти))",
+      "delay": 0
+    },
+    {
+      "id": "dyrjava",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "div.jobOptions > span > span",
+      "multiple": false,
+      "regex": "(България)|(^\\w+$)",
+      "delay": 0
+    },
+    {
+      "id": "site",
+      "type": "SelectorText",
+      "parentSelectors": [
+        "page"
+      ],
+      "selector": "title",
+      "multiple": false,
+      "regex": "Zaplata.bg",
+      "delay": 0
+    }
+  ]
+}
