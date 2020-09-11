@@ -22,3 +22,21 @@ These two JSONs files are used to scrape OJA every day for OJA published yesterd
 These two JSONs files are used to scrape OJA every quarter for all published OJA at the moment:
 - jobs.bg.quarter.json
 - zaplata.bg.quarter.json
+
+## oja.check.py
+
+This script checks the scraped data for inconsistency in the structre and periods. The data is divided in two files - without errors and with errors.
+
+## oja.encode.py
+
+This script classifies the scraped data without errors by:
+- educaional levels
+- country
+- NUTS 3 level
+- permanent or temporary work
+- full or part time work
+- SBR ID code
+- NACE rev2.0 codes
+
+The classification is done by string comparison. No machine learning is used.
+
