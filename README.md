@@ -9,7 +9,16 @@ This software is running on a Windows Server with Pyhton 3.7.2. It is scheduled 
 Currenty, BNSI is scraping jobs.bg and zaplata.bg web sites for OJA.
 
 ## specific_spyder.py
+
 This is a Python Scrapy spyder. It uses JSON files with description what to scrap from which web site. 
 
-The script is called with command like this:
+The script is called with command like this:   
 scrapy crawl specific -a tag=jobs.bg
+
+These two JSONs files are used to scrape OJA every day for OJA published yesterday:
+- jobs.bg.json
+- zaplata.bg.json
+
+These two JSONs files are used to scrape OJA every quarter for all published OJA at the moment:
+- jobs.bg.quarter.json
+- zaplata.bg.quarter.json
