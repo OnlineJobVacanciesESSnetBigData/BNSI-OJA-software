@@ -35,8 +35,19 @@ This script classifies the scraped data without errors by:
 - NUTS 3 level
 - permanent or temporary work
 - full or part time work
-- SBR ID code
+- SBR ID codes
 - NACE rev2.0 codes
 
 The classification is done by string comparison. No machine learning is used.
 
+## oja.week.statistics.py, oja.month.statistics.py and oja.quarter.statistics.py
+
+These scripts calculates total number and change index of OJAs by weeks, monthes and quarters.
+
+## oja.week.indicators.py, oja.month.indicators.py and oja.quarter.indicators.py
+
+These scripts calculates total number and change index of OJAs by weeks, monthes and quarters and by:
+- Educational level
+- Full and part time work
+- NACE rev2.0 level 1
+- NUTS 3 level
